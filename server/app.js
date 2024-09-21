@@ -3,10 +3,9 @@ const mongoose = require("mongoose");
 const app = express();
 const blogRoutes = require("./routes/BlogRoutrs");
 app.use(express.json());
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 //connect to mongodb
-const dbUrl =
-  "mongodb+srv://aya:12345@smiling.pgesm.mongodb.net/Blog_img?retryWrites=true&w=majority";
+const dbUrl = process.env.dbUrl;
 mongoose
   .connect(dbUrl)
   .then((resault) => app.listen(PORT))
