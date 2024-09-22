@@ -8,9 +8,15 @@ const PORT = process.env.PORT || 4000;
 const dbUrl = process.env.dbUrl;
 mongoose
   .connect(dbUrl)
-  .then((resault) => app.listen(PORT))
-  .catch((err) => console.log(err));
-
+  .then(() => {
+    console.log("Connected to MongoDB successfully");
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error("Failed to connect to MongoDB", err);
+  });
 app.use("/api/blogs", blogRoutes);
 app.use((req, res) => {
   res.render("404", { title: "404" });
