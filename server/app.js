@@ -4,7 +4,7 @@ const app = express();
 require("dotenv").config();
 const blogRoutes = require("./routes/BlogRoutrs");
 app.use(express.json());
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 //connect to mongodb
 const dbUrl = process.env.dbUrl;
 mongoose
